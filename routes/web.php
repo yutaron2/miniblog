@@ -35,3 +35,8 @@ Route::prefix('posts')->as('posts.')->group(function () {
 
     Route::get('{post}', 'PostController@show')->name('show');
 });
+
+Route::middleware('auth')->prefix('bookmarks')->as('bookmarks.')->group(function () {
+    Route::get('/', 'BookmarkController@index')->name('index');
+    Route::post('{post}', 'BookmarkController@add')->name('add'); // ★ 追加
+});

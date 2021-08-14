@@ -6,6 +6,12 @@
       <div class="card-header">{{ $post->user->name }}</div>
       <div class="card-body">
         <p class="card-text">{{ $post->body }}</p>
+        @auth
+      <form method="POST" action="{{ route('bookmarks.add', $post->id) }}">
+        @csrf
+        <button type="submit" class="btn btn-success">ブックマークする</button>
+      </form>
+    @endauth
       </div>
     </div>
   </div>
