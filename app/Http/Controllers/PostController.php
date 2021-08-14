@@ -42,4 +42,11 @@ class PostController extends Controller
         return redirect()->to('/');
     }
 
+    public function show(Post $post)
+    {
+        $post->load('replies.user');
+    
+        return view('posts.show', ['post' => $post]);
+    }
+
 }
