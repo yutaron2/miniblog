@@ -49,4 +49,15 @@ class PostController extends Controller
         return view('posts.show', ['post' => $post]);
     }
 
+    public function reply(Request $request, Post $post)
+    {
+    $reply = new Reply;
+    $reply->fill($request->all());
+    $reply->user()->associate(Auth::user());
+    $reply->post()->associate($post);
+    $reply->save();
+
+    return redirect()->back();
+    }
+
 }
