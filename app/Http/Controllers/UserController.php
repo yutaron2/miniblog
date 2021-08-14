@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\User; // App\User クラスをインポートする
+use App\Models\User; // App\User クラスをインポートする
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateRequest;
