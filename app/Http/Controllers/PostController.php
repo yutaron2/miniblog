@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reply;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,8 +46,9 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->load('replies.user');
+        $bookmarked = $post->bookmarkingUsers->contains(Auth::id()); // ★
     
-        return view('posts.show', ['post' => $post]);
+        return view('posts.show', ['post' => $post, 'bookmarked' => $bookmarked]);
     }
 
     public function reply(Request $request, Post $post)

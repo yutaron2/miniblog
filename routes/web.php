@@ -38,5 +38,6 @@ Route::prefix('posts')->as('posts.')->group(function () {
 
 Route::middleware('auth')->prefix('bookmarks')->as('bookmarks.')->group(function () {
     Route::get('/', 'BookmarkController@index')->name('index');
-    Route::post('{post}', 'BookmarkController@add')->name('add'); // ★ 追加
+    Route::post('{post}', 'BookmarkController@add')->name('add');
+    Route::post('{post}/remove', 'BookmarkController@remove')->name('remove'); // ★ 追加
 });
